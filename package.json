@@ -2,9 +2,12 @@
   "name": "web-browser-tool",
   "type": "module",
   "dependencies": {
+    "@langchain/core": "^0.3.40",
+    "@langchain/langgraph": "^0.2.46",
+    "@langchain/ollama": "^0.2.0",
     "@langchain/community": "^0.0.31",
-    "langchain": "^0.1.21",
+    "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",
-    "axios": "^1.6.7"
+    "langchain": "^0.1.21"
   }
-} 
+}
