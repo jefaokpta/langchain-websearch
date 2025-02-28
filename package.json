@@ -1,0 +1,10 @@
+{
+  "name": "web-browser-tool",
+  "type": "module",
+  "dependencies": {
+    "@langchain/community": "^0.0.31",
+    "langchain": "^0.1.21",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.7"
+  }
+} 
