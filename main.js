@@ -2,19 +2,27 @@ import { WebBrowser } from "langchain/tools/webbrowser";
 import { ChatOllama } from "@langchain/ollama";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
+import dotenv from 'dotenv';
+
+// Carrega as variáveis de ambiente do arquivo .env
+dotenv.config();
 
 async function createWebBrowserAgent(url, pergunta) {
     try {
+        // Obtém o baseUrl da variável de ambiente
+        const baseUrl = process.env.OLLAMA_BASE_URL;
+        
         // Inicializa o modelo Ollama (você pode mudar o modelo conforme necessário)
         const model = new ChatOllama({
             model: "llama3.2", // ou outro modelo que você tenha instalado
             temperature: 0.5,
-            baseUrl: "http://192.168.15.212:11434",
+            baseUrl: baseUrl,
         });
 
         // Inicializa os embeddings do Ollama
         const embeddings = new OllamaEmbeddings({
-            model: "llama3.2" // use o mesmo modelo para consistência
+            model: "llama3.2", // use o mesmo modelo para consistência
+            baseUrl: baseUrl
         });
 
         // Cria o navegador web
@@ -23,7 +31,7 @@ async function createWebBrowserAgent(url, pergunta) {
         console.log(url, pergunta);
         // Faz a consulta
         const resultWebBrowser = await browser.invoke(
-            `"${url}"`
+            `"${url}", "${pergunta}"`
         );
 
         console.log("Resultado da consulta ao navegador web:");
