@@ -8,12 +8,13 @@ async function createWebBrowserAgent(url, pergunta) {
         const model = new Ollama({
             model: "llama3.2", // ou outro modelo que você tenha instalado
             temperature: 0.5,
-            baseUrl: "http://192.168.15.212:11434"
+            baseUrl: "http://veia-interno.vipsolutions.com.br:11434",
         });
 
         // Inicializa os embeddings do Ollama
         const embeddings = new OllamaEmbeddings({
-            model: "llama3.2" // use o mesmo modelo para consistência
+            model: "llama3.2", // use o mesmo modelo para consistência
+            baseUrl: "http://veia-interno.vipsolutions.com.br:11434",
         });
 
         // Cria o navegador web
